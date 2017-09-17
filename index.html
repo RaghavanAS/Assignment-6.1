@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>JS to master the conditional operators</title>
+        <!-- HTML5 shim for IE8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+      <script src=“https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js”></script>
+    <![endif]-->
+<!-- javascipt starts here -->
+<script type="text/javascript">
+//giving name to a function
+function myFunc(){
+	//input from the text box
+var Salary=Number(document.getElementById("basicSalary").value);
+var WorkingHours=Number(document.getElementById("workingHours").value);
+var TotalSal=0;
+var BonusAmt=0;
+//validation for type of salary and working hours to be number
+if (isNaN(Salary)|| isNaN(WorkingHours))
+{
+alert("Only Numbers are allowed");
+}
+else
+{
+if (Salary >= 15000 && WorkingHours > 10)
+{
+BonusAmt=(Salary*15)/100;
+TotalSal =Salary+BonusAmt;
+}
+else
+{
+BonusAmt=(Salary*5)/100;
+TotalSal = Salary+BonusAmt;
+//dynamically creating elements using js
+var SalaryOut=document.createElement("div");
+var BonusOut=document.createElement("div");
+var totSal=document.createTextNode("Total Salary After Bonus is : "+TotalSal);
+var bonAmt=document.createTextNode("Bonus Offered is : "+BonusAmt);
+SalaryOut.setAttribute("class","Salout");
+SalaryOut.style.backgroundColor="red";
+SalaryOut.appendChild(totSal);
+//Adding css properties
+BonusOut.setAttribute("class","BonOut");
+BonusOut.style.backgroundColor="red";
+BonusOut.appendChild(bonAmt);
+//appending elements to Div
+document.getElementById("mainDiv").appendChild(SalaryOut);
+document.getElementById("mainDiv").appendChild(BonusOut);
+}
+
+}
+}
+<!-- javascript ends here -->
+</script>
+<style type="text/css">
+#mainDiv{
+height: 200px;
+width:300px;
+}
+</style>
+</head>
+
+<body>
+<!-- Header -->
+<header>
+<h1> Assignment 6.1 </h1>
+</header>
+<!-- main section -->
+<main id="mainSection">
+<section id="subSection">
+<!-- text box to pass the input to the sript on submit -->
+<label> <b> Enter the Basic Salary of the Employee </b></label> <input type="text" id="basicSalary" name="basicSal"  required title="Only numbers are allowed">
+<label><b> Enter the Daily Working hours of the Employee </b></label><input type="number" id="workingHours" value="9">
+<input type=submit value="submit" onclick="myFunc()">
+<div id="mainDiv"></div>
+</section>
+</main>
+</body>
+</html>
